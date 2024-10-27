@@ -1,0 +1,5 @@
+{"nombre":"Alexandro","apellidos":"Suciu Peici","password":"123123","telefono":"666831936","email":"phancer666@gmail.com","sexo":"hombre"}
+{"nombre":"Alexandro","apellidos":"Suciu Peici","password":"123123123","telefono":"666831936","email":"phancer666@gmail.com","sexo":"hombre"}
+{"nombre":"Javier","apellidos":"Suciu Peici","password":"123123123","telefono":"666831936","email":"phancer666@gmail.com","sexo":"hombre"}
+{"nombre":"Alexandro","apellidos":"Suciu Peici","password":"Casmargg66\u20ac","telefono":"666831936","email":"phancer666@gmail.com","sexo":"mujer"}
+{"nombre":"Alexandro","apellidos":"Suciu Peici","password":"123123123123123","telefono":"666831936","email":"phancer666@gmail.com","sexo":"hombre"}

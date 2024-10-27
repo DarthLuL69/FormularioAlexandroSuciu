@@ -3,45 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla de Datos</title>
+    <title>Tabla de Usuarios</title>
+    <script src="js/script.js" defer></script>
 </head>
 <body>
+    <h1>Tabla de Usuarios</h1>
 
-    <h1>Tabla de Datos del Formulario</h1>
+    <input type="text" id="filterInput" placeholder="Buscar por nombre o apellido...">
 
-    <table border="1">
-        <tr>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>Teléfono</th>
-            <th>Email</th>
-            <th>Sexo</th>
-        </tr>
-        <tr>
-            <td>Juan</td>
-            <td>Pérez</td>
-            <td>555-1234</td>
-            <td>juanp_45@gmail.com</td>
-            <td>Hombre</td>
-        </tr>
-        <tr>
-            <td>María</td>
-            <td>Gómez</td>
-            <td>555-5678</td>
-            <td>mariag124@gmail.com</td>
-            <td>Mujer</td>
-        </tr>
+    <table border="1" id="userTable">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Sexo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Filas de usuarios se insertarán aquí -->
+        </tbody>
     </table>
-
-    <hr>
-
-    <ul>
-        <li><a href="formulario.html">Formulario</a></li>
-        <li><a href="tabla.html">Tabla</a></li>
-        <li><a href="1.html">Hoja de estilo libre 1</a></li>
-        <li><a href="2.html">Hoja de estilo libre 2</a></li>
-        <li><a href="3.html">Hoja de estilo libre 3</a></li>
-    </ul>
-
 </body>
 </html>
