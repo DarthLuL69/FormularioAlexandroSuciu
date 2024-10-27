@@ -25,7 +25,7 @@ window.onload = function() {
         }
     }
 
-    // Filtrado
+    // Filtrado.
     function filtrarTabla() {
         const textoFiltro = entradaFiltro.value.toLowerCase();
         if (textoFiltro.length < 3) {
@@ -41,9 +41,6 @@ window.onload = function() {
         llenarTabla(datosFiltrados);
     }
 
-    // Rellenar la tabla al cargar la página
     llenarTabla(usuarios);
-
-    // Añadir evento para filtrar la tabla
     entradaFiltro.oninput = filtrarTabla;
 };
