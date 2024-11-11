@@ -1,5 +1,5 @@
 window.onload = function() {
-    const cuerpoTabla = document.getElementById('tablaUsuarios').getElementsByTagName('tbody')[0];
+    const cuerpoTabla = document.getElementsByTagName('tbody')[0];
     const entradaFiltro = document.getElementById('entradaFiltro');
 
     // Relleno de la tabla.
@@ -14,7 +14,7 @@ window.onload = function() {
                 <td>${datos[i].email}</td>
                 <td>${datos[i].sexo}</td>
                 <td><button class="botonEliminar">X</button></td>
-            `;
+                `;
             cuerpoTabla.appendChild(fila);
         }
         const botonesEliminar = document.getElementsByClassName('botonEliminar');

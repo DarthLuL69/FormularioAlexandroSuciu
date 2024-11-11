@@ -1,69 +1,77 @@
 <?php
+
 require_once '../interfaces/IToJson.php';
 
-class User implements IToJson {
-    private $nombre;
-    private $apellidos;
-    private $password;
-    private $telefono;
-    private $email;
-    private $sexo;
+class Usuario implements IToJson {
+    private $conn;
+    private $table_name = "alumno";
 
-    public function __construct($nombre, $apellidos, $password, $telefono, $email, $sexo) {
-        $this->nombre = $nombre;
-        $this->apellidos = $apellidos;
-        $this->password = $password;
-        $this->telefono = $telefono;
-        $this->email = $email;
-        $this->sexo = $sexo;
+    public $id;
+    public $nombre;
+    public $apellidos;
+    public $password;
+    public $telefono;
+    public $email;
+    public $sexo;
+
+    public function __construct($db) {
+        $this->conn = $db;
     }
 
-    public function getNombre() {
-        return $this->nombre;
+    public function getUsuario($id) {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getApellidos() {
-        return $this->apellidos;
+    public function getUsuarios() {
+        $query = "SELECT * FROM " . $this->table_name;
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getPassword() {
-        return $this->password;
+    public function createUsuario() {
+        $query = "INSERT INTO " . $this->table_name . " SET nombre=:nombre, apellidos=:apellidos, password=:password, telefono=:telefono, email=:email, sexo=:sexo";
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(":nombre", $this->nombre);
+        $stmt->bindParam(":apellidos", $this->apellidos);
+        $stmt->bindParam(":password", $this->password);
+        $stmt->bindParam(":telefono", $this->telefono);
+        $stmt->bindParam(":email", $this->email);
+        $stmt->bindParam(":sexo", $this->sexo);
+
+        if ($stmt->execute()) {
+            return $this->conn->lastInsertId();
+        }
+
+        return false;
     }
 
-    public function getTelefono() {
-        return $this->telefono;
+    public function updateUsuario($id) {
+        $query = "UPDATE " . $this->table_name . " SET nombre=:nombre, apellidos=:apellidos, password=:password, telefono=:telefono, email=:email, sexo=:sexo WHERE id=:id";
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(":nombre", $this->nombre);
+        $stmt->bindParam(":apellidos", $this->apellidos);
+        $stmt->bindParam(":password", $this->password);
+        $stmt->bindParam(":telefono", $this->telefono);
+        $stmt->bindParam(":email", $this->email);
+        $stmt->bindParam(":sexo", $this->sexo);
+        $stmt->bindParam(":id", $id);
+
+        return $stmt->execute();
     }
 
-    public function getEmail() {
-        return $this->email;
-    }
+    public function deleteUsuario($id) {
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $id);
 
-    public function getSexo() {
-        return $this->sexo;
-    }
-
-    public function setNombre($nombre) {
-        $this->nombre = $nombre;
-    }
-
-    public function setApellidos($apellidos) {
-        $this->apellidos = $apellidos;
-    }
-
-    public function setPassword($password) {
-        $this->password = $password;
-    }
-
-    public function setTelefono($telefono) {
-        $this->telefono = $telefono;
-    }
-
-    public function setEmail($email) {
-        $this->email = $email;
-    }
-
-    public function setSexo($sexo) {
-        $this->sexo = $sexo;
+        return $stmt->execute();
     }
 
     public function toJson() {
